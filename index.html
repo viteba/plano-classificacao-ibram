@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Plano de Classificação IBRAM</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI, Arial;
+background:#f4f6f9;
+}
+
+/* BARRA SUPERIOR */
+
+.topbar{
+background:#003366;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.titulo-topo{
+font-size:18px;
+font-weight:600;
+}
+
+/* CAPA */
+
+.capa{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.capa h1{
+color:#003366;
+font-size:32px;
+max-width:800px;
+}
+
+.botao{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+background:#00875A;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.botao:hover{
+background:#006644;
+}
+
+/* SISTEMA */
+
+.sistema{
+display:none;
+padding:30px;
+}
+
+.topo{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.voltar{
+padding:10px 20px;
+border:none;
+border-radius:5px;
+background:#003366;
+color:white;
+cursor:pointer;
+}
+
+.voltar:hover{
+background:#001f40;
+}
+
+.pesquisa{
+padding:10px;
+width:300px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.container{
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* LISTAS */
+
+ul{
+list-style:none;
+padding-left:25px;
+}
+
+li{
+margin:6px 0;
+cursor:pointer;
+}
+
+.seta{
+display:inline-block;
+width:20px;
+}
+
+.funcao{
+font-weight:700;
+color:#00875A;
+font-size:17px;
+}
+
+.subfuncao{
+color:#003366;
+}
+
+.atividade{
+color:#00509E;
+}
+
+.documento{
+color:#333;
+cursor:default;
+}
+
+.hidden{
+display:none;
+}
+
+.highlight{
+background:#fff3cd;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="titulo-topo">
+Universidade de Brasília • Sistema de Classificação Documental
+</div>
+</div>
+
+<!-- CAPA -->
+
+<div class="capa" id="capa">
+
+<h1>Proposta do Plano de Classificação do Instituto Brasileiro de Museus</h1>
+
+<button class="botao" onclick="entrar()">
+Acessar Sistema
+</button>
+
+</div>
+
+<!-- SISTEMA -->
+
+<div class="sistema" id="sistema">
+
+<div class="topo">
+
+<button class="voltar" onclick="voltar()">
+Voltar para Capa
+</button>
+
+<input class="pesquisa" type="text" placeholder="Pesquisar..." onkeyup="pesquisar(this.value)">
+
+</div>
+
+<div class="container">
+<ul id="arvore"></ul>
+</div>
+
+</div>
+
+<script>
+
+function entrar(){
+document.getElementById("capa").style.display="none";
+document.getElementById("sistema").style.display="block";
+}
+
+function voltar(){
+document.getElementById("sistema").style.display="none";
+document.getElementById("capa").style.display="flex";
+}
+
+/* ESTRUTURA DO PLANO */
+
+const plano = {
+
+/* FUNÇÃO 01 */
+
+"01":{
+nome:"NORMATIZAÇÃO E REGULAMENTAÇÃO MUSEAL",
+subfuncoes:{
+"01":{
+nome:"Unidades Museológicas",
+atividades:{
+"01":{
+nome:"Implementação de políticas públicas para o setor museológico",
+documentos:{
+"01":"Acordo de cooperação entre instituições para a Política Nacional de Museus",
+"02":"Projeto de Lei do Estatuto de Museus",
+"03":"Projeto de lei dos acervos e coleções dos museus",
+"04":"Programas de políticas públicas de cultura"
+}
+}
+}
+},
+
+"02":{
+nome:"Bens Musealizados",
+atividades:{
+"01":{
+nome:"Implantação de políticas para preservação e exposição de bens culturais",
+documentos:{
+"01":"Projetos para preservação de bens culturais",
+"02":"Processo de guarda e preservação do patrimônio brasileiro",
+"03":"Parecer técnico de bens culturais musealizados",
+"04":"Relatório de atividades de exposição museal",
+"05":"Projeto de implantação de exposições"
+}
+}
+}
+}
+
+}
+
+},
+
+/* FUNÇÃO 02 */
+
+"02":{
+nome:"COORDENAR O SISTEMA BRASILEIRO DE MUSEUS",
+subfuncoes:{
+"01":{
+nome:"Gestão do Sistema Brasileiro de Museus",
+atividades:{
+"01":{
+nome:"Coordenação e desenvolvimento do sistema",
+documentos:{
+"01":"Decretos para instituir o Sistema Brasileiro de Museus",
+"02":"Projetos de implantação do Sistema Brasileiro de Museus",
+"03":"Ata de reunião do Comitê Gestor do Sistema Brasileiro de Museus",
+"04":"Termos de adesão do Sistema Brasileiro de Museus"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 03 */
+
+"03":{
+nome:"FORTALECIMENTO DAS INSTITUIÇÕES MUSEOLÓGICAS",
+subfuncoes:{
+"01":{
+nome:"Criação e Administração de Museus",
+atividades:{
+"01":{
+nome:"Criação, extinção, registro e apoio técnico de museus",
+documentos:{
+"01":"Processos para criação, fusão, incorporação, cisão ou extinção de museu",
+"02":"Decreto de criação de museu",
+"03":"Proposta de reorganização de museus",
+"04":"Parecer técnico de projeto para criação, fusão, incorporação, cisão ou extinção de museus",
+"05":"Projeto de implantação de museus",
+"06":"Estudo técnico para construção de museu",
+"07":"Comunicado de fechamento de museu"
+}
+}
+}
+},
+
+"02":{
+nome:"Procedimentos técnicos para projetos de arquitetura de museus, expografia, modernização e manutenção museal",
+atividades:{
+
+"01":{
+nome:"Arquitetura museal",
+documentos:{
+"01":"Contrato de projeto executivo para obra nos museus",
+"02":"Plano diretor de usos dos espaços do conjunto arquitetônico dos museus",
+"03":"Planta baixa de projeto museológico",
+"04":"Estudo de elaboração de propostas e procedimentos técnico",
+"05":"Parecer de proposição de procedimentos técnicos"
+}
+},
+
+"02":{
+nome:"Modernização, preservação e manutenção museológica",
+documentos:{
+"01":"Diagnóstico museológico e museográfico",
+"02":"Projeto de restauração e preservação dos museus",
+"03":"Parecer técnico de projeto museal",
+"04":"Contrato de serviços para manutenção e modernização museal",
+"05":"Licitação de projeto de acessibilidade",
+"06":"Relatório de obras de restauração dos museus",
+"07":"Relatório de vistoria técnica dos museus"
+}
+}
+
+}
+}
+
+}
+
+},
+
+/* FUNÇÃO 04 */
+
+"04":{
+nome:"VISITAÇÃO DE MUSEUS",
+subfuncoes:{
+"01":{
+nome:"Estudo de Público",
+atividades:{
+"01":{
+nome:"Elaboração de estudos de público dos museus e dados de visitações",
+documentos:{
+"01":"Questionário de pesquisa de acessibilidade",
+"02":"Relatório de visita aos museus",
+"03":"Projeto observatório dos museus",
+"04":"Termo de cooperação de observatório dos museus"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 05 */
+
+"05":{
+nome:"PROGRAMAS INSTITUCIONAIS E PLANO MUSEOLÓGICO",
+subfuncoes:{
+"01":{
+nome:"Programa e planos museológicos",
+atividades:{
+"01":{
+nome:"Orientação, gestão, elaboração e deliberação da Pesquisa dos Planos Museológicos",
+documentos:{
+"01":"Planos Museológicos",
+"02":"Relatório de acompanhamento do Programa Institucional e Planos Museológicos",
+"03":"Estudos e projetos de gestão institucional do Programa Institucional do Plano Museológico"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 06 */
+
+"06":{
+nome:"GESTÃO DO CADASTRO NACIONAL DE MUSEUS",
+subfuncoes:{
+"01":{
+nome:"Monitoramento cadastral",
+atividades:{
+"01":{
+nome:"Implantação e atualização do Cadastro Nacional de Museus",
+documentos:{
+"01":"Parecer técnico do sistema do Cadastro Nacional de Museus dos museus",
+"02":"Relatório de atividades do Cadastro Nacional de Museus",
+"03":"Projeto de implantação do Cadastro Nacional de Museus",
+"04":"Relatório de dados cadastrais dos museus",
+"05":"Boletim de divulgação de dados do Cadastro Nacional de Museus",
+"06":"Ficha para mapeamento de museus",
+"07":"Ofício de atualização de dados de museus"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 07 */
+
+"07":{
+nome:"CONTROLE DA MOVIMENTAÇÃO DE BENS CULTURAIS MUSEALIZADOS",
+subfuncoes:{
+"01":{
+nome:"Movimentação, acompanhamento e comercialização museal",
+atividades:{
+"01":{
+nome:"Exportação de patrimônio cultural musealizado",
+documentos:{
+"01":"Ofício de exportação de obra",
+"02":"Parecer técnico de saída de obras de arte do país",
+"03":"Projeto de implantação do Cadastro Nacional de Museus",
+"04":"Autorização para venda de peças no exterior",
+}
+},
+
+"02":{
+nome:"Aquisição e doação de bens culturais",
+documentos:{
+"01":"Ofício de doação de acervos, obras de arte ou coleções",
+"02":"Termo de doação ou permuta de peças",
+"03":"Parecer técnico para regularizar situação do acervo",
+"04":"Termo de aquisição de acervo",
+"05":"Termo de cessão de uso de obras"
+}
+},
+
+"03":{
+nome:"Empréstimo, guarda e comodato de bens culturais",
+documentos:{
+"01":"Termo de comodato de obras de arte dos museus",
+"02":"Ofício de empréstimo de obras de arte dos museus ",
+"03":"Ofício de transferência de peças ou obras de arte dos museus",
+"04":"Termo de adiantamento ao comodato entre unidades museológicas",
+"05":"Parecer técnico de guarda de obras de arte e acervo"
+}
+},
+
+"04":{
+nome:"Prevenção à perdas de bens museais",
+documentos:{
+"01":"Ofício de peças desaparecidas do acervo dos museus",
+"02":"Parecer técnico de vistoria de obras roubadas"
+}
+},
+
+"05":{
+nome:"Aquisição de bens culturais de interesse público",
+documentos:{
+"01":"Declaração de interesse público de obras de arte",
+"02":"Processo administrativo para declaração de interesse público"
+}
+},
+
+"06":{
+nome:"Comercialização de produtos",
+documentos:{
+"01":"Recibo de comercialização de produtos",
+"02":"Prestação de contas de livros vendidos"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 08 */
+
+"08":{
+nome:"INVENTÁRIO DE BENS MUSEALIZADOS",
+subfuncoes:{
+"01":{
+nome:"Promoção de inventário museal",
+atividades:{
+"01":{
+nome:"Implementação do Inventário Nacional dos Bens Culturais Musealizados",
+documentos:{
+"01":"Termo de Cooperação de inventário de objetos de museus",
+"02":"Inventário de acervos arquivísticos, bibliográficos e museológicos dos museus"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 09 */
+
+"09":{
+nome:"PROPOSIÇÃO DE MEDIDAS DE SEGURANÇA, PRESERVAÇÃO E PROTEÇÃO DOS ACERVOS",
+subfuncoes:{
+"01":{
+nome:"Preservação, conservação e restauração dos acervos musealizados",
+atividades:{
+"01":{
+nome:"Conservação e restauração museal",
+documentos:{
+"01":"Contrato de serviços de higienização e conservação dos acervos arquivístico, fotográfico, bibliográfico e museológico",
+"02":"Processo de contratação de empresa para conservação preventiva de acervo museal",
+"03":"Minuta de portaria de avaliação de obra de arte",
+"04":"Projeto de restauração de museu",
+"05":"Licitação de projeto básico de serviços de conservação, higienização e restauração de museu",
+"06":"Laudo de vistoria em museu",
+"07":"Laudo técnico de conservação de obra de arte",
+"08":"Avaliação do estado de conservação de obras de arte",
+"09":"Diagnóstico de estado de conservação de obra de arte"
+}
+},
+
+"02":{
+nome:"Preservação e segurança dos bens culturais",
+documentos:{
+"01":"Termo de cooperação técnica da segurança dos museus",
+"02":"Relatório sobre a segurança de museu",
+"03":"Ofício sobre medidas de segurança para prevenir furtos e roubos de obras de arte"
+}
+},
+
+"03":{
+nome:"Destinação de bens culturais apreendidos",
+documentos:{
+"01":"Parecer de doação de obra apreendida",
+"02":"Pedido de destinação de bem apreendido",
+"03":"Avaliação de peças apreendidas"
+}
+},
+
+"04":{
+nome:"Cadastro Nacional de Bens Culturais Musealizados Desaparecidos",
+documentos:{
+"01":"Boletim de ocorrência sobre furto de peça de acervo museológico"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 10 */
+
+"10":{
+nome:"PUBLICIDADE MUSEAL",
+subfuncoes:{
+"01":{
+nome:"Estabelecimento do uso de imagem institucional",
+atividades:{
+"01":{
+nome:"Elaboração de normas para o uso da imagem dos museus",
+documentos:{
+"01":"Termo de Cessão de uso de imagem" 
+}
+},
+
+"02":{
+nome:"Promoção de campanhas publicitárias",
+documentos:{
+"01":"Projeto básico para criação de identidade visual dos museus",
+"02":"Programa para divulgação em evento"
+}
+},
+
+"03":{
+nome:"Promoção de eventos",
+documentos:{
+"01":"Relatório da Semana Nacional de Museu",
+"02":"Minuta de edital de criação de marca para o Ano Nacional de Museus",
+"03":"Relatório do Fórum Nacional de Museus",
+"04":"Relatório da Primavera dos Museus",
+"05":"Relatório de Fórum Estadual de Museus",
+"06":"Programação da Semana Nacional de Museus",
+"07":"Certificado de participação",
+"08":"Relatório de atividades do Programa Cultural Pan",
+"09":"Relatório do Encontro Ibero-Americano de Museus",
+"10":"Fotografias dos participantes em eventos" 
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 11 */
+
+"11":{
+nome:"APOIO AOS PROGRAMAS DE FINANCIAMENTO DO SETOR MUSEOLÓGICO",
+subfuncoes:{
+"01":{
+nome:"Projetos de incentivo e fomento à cultura museal",
+atividades:{
+"01":{
+nome:"Apoio à cultura, programas e projetos",
+documentos:{
+"01":"Parecer técnico dos projetos Programa Nacional de Apoio à Cultura-PRONAC",
+"02":"Relatório de progresso de projeto de desenvolvimento institucional",
+"03":"Guia de parecer técnico de emenda parlamentar",
+"04":"Guia para análise técnica de projeto",
+"05":"Ata de reunião de capacitação do Programa Nacional de Apoio à Cultura"
+}
+},
+
+"02":{
+nome:"Captação de recursos",
+documentos:{
+"01":"Solicitação de apoio financeiro para projeto",
+"02":"Plano de trabalho de apoio a projeto",
+"03":"Plano de trabalho de orçamento e proposta de funcionamento de museu",
+"04":"Formulário para apresentação de projeto",
+"05":"Proposta de revitalização e musealização",
+"06":"Emenda parlamentar para museu para o fomento e realização de projeto",
+"07":"Minuta de ofício de elaboração de edital de fomento dos museus esportivos",
+"08":"Solicitação de renovação de valor aprovado em projeto",
+"09":"Nota técnica de proposta de emenda orçamentária",
+"10":"Pedido de verba para criação de museu" 
+}
+},
+
+"03":{
+nome:"Fundo Nacional de Cultura",
+documentos:{
+"01":"Processo de apuração da aplicação dos museus do Fundo Nacional de Cultura",
+"02":"Plano de trabalho de apoio a projeto por meio do FNC",
+"03":"Proposta aprovada com recurso do FNC"
+}
+},
+
+"04":{
+nome:"Seleção pública",
+documentos:{
+"01":"Edital Mais Museus",
+"02":"Edital Modernização de Museus",
+"03":"Minuta de Edital do financiamento museal",
+"04":"Edital Prêmio Darcy Ribeiro",
+"05":"Edital Prêmio Mário de Andrade",
+"06":"Edital Seminários, Museus Patrimônio, Memória e Sociedade",
+"07":"Mensagem eletrônica dos editais",
+"08":"Projeto de Modernização de Museus",
+"09":"Edital Mapeamento, Documentação e Apoio ao Patrimônio Cultural Imaterial",
+"10":"Edital Programa de Preservação de Acervo BNDES", 
+"11":"Parecer técnico de prestação de contas",
+"12":"Termo de cooperação técnica para revitalização de museu",
+"13":"Parecer técnico do Programa de Apoio à projetos de Preservação de Acervos - BNDES",
+"14":"Relatório do Programa de Apoio à projetos de Preservação de Acervos - BNDES",
+"15":"Edital Prêmio Mário Pedrosa",
+"16":"Regulamento para concessão de apoio à projetos de Preservação de Acervos - BNDES",
+"17":"Convênio de cooperação técnica entre o MinC e o BNDES"
+}
+},
+
+"05":{
+nome:"Apoio direto",
+documentos:{
+"01":"Prestação de contas de projeto de modernização",
+"02":"Convênio de obras de restauro, programa e projeto de modernização dos museus",
+"03":"Processo de projeto de adequação de acervo dos museus",
+"04":"Projeto arquitetônico de modernização dos museus",
+"05":"Projeto básico para convênio de modernização de museu",
+"06":"Projeto básico para convênio de programa de pós-graduação",
+"07":"Parecer técnico ao projeto de aquisição de mobiliário",
+"08":"Termos de convênio"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 12 */
+
+"12":{
+nome:"SUSTENTABILIDADE DOS MUSEUS",
+subfuncoes:{
+"01":{
+nome:"Promoção da sustentabilidade do patrimônio cultural musealizado",
+atividades:{
+"01":{
+nome:"Pesquisas das práticas de sustentabilidade socioeconômica dos museus",
+documentos:{
+"01":"Estudo de sustentabilidade em museu"
+}
+},
+
+"02":{
+nome:"Desenvolvimento de sustentabilidade para memória de museus",
+documentos:{
+"01":"Cartas de intenção de parceria institucional",
+"02":"Termo de referência de construção compartilhada",
+"03":"Convênio do Programa Observatório de Museus e Centros Culturais",
+"04":"Termo de cooperação técnica para a preservação do Patrimônio Cultural Afro-Brasileiro",
+"05":"Termo de Adesão ao Observatório de Museus",
+"06":"Projeto de cooperação técnica internacional",
+"07":"Projeto História Oral",
+"08":"Projeto de cooperação técnica da memória social no Brasil",
+"09":"Ata de memória de reunião para definição de ações e projetos de sustentabilidade cultural e turística"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 13 */
+
+"13":{
+nome:"EDUCAÇÃO MUSEAL",
+subfuncoes:{
+"01":{
+nome:"Promoção de programas, projetos e atividades museológicas",
+atividades:{
+"01":{
+nome:"Programas e projetos de educação museal e cultura",
+documentos:{
+"01":"Relatório de atividades desenvolvidas pela equipe de ação educativa de museu",
+"02":"Termo de Cooperação técnica para o desenvolvimento de projeto ensino, pesquisa e extensão",
+"03":"Relatório de visita técnica da Cooperação Cultural Brasil"
+}
+},
+
+"02":{
+nome:"Formação e capacitação de profissionais nas áreas de educação museal",
+documentos:{
+"01":"Relatório de oficina de capacitação em educação museal",
+"02":"Parecer de projeto pedagógico de graduação em museologia",
+"03":"Curso da Lei Rouanet",
+"04":"Parecer técnico de projeto de curso de formação",
+"05":"Protocolo de cooperação institucional em educação indígena",
+"06":"Acordo-quadro de colaboração institucional para continuidade das atividades escolares",
+"07":"Apoio para criação de cursos de graduação e pós-graduação em museologia",
+"08":"Ata de comissão de seleção de candidatos à vaga de bolsista do Programa de Especialização em Patrimônio",
+"09":"Planejamento de oficina e atividades do Programa de Especialização em Patrimônio",
+"10":"Relatório do Programa de Especialização em Patrimônio",
+"11":"Processo de criação de graduação em museologia",
+"12":"Avaliação de oficina de capacitação e pesquisa",
+"13":"Edital do Programa de Especialização em Patrimônio",
+"14":"Projeto do Programa de Formação e Capacitação em Museologia",
+"15":"Acordo de cooperação institucional para criação de projeto museal e acesso da população em museus",
+"16":"Proposta para realização de oficina",
+"17":"Ficha de inscrição de oficina",
+"18":"Lista de frequência de oficina",
+"19":"Declaração de bolsistas do Programa de Especialização em Patrimônio",
+"20":"Folhas de ponto dos bolsistas do Programa de Especialização em Patrimônio",
+"21":"Certificados dos cursos de capacitação",
+"22":"Ata de reunião de seleção de bolsistas de curso",
+"23":"Projeto de implantação de curso",
+"24":"Projeto de aplicação de ações da Política Nacional de Museus",
+"25":"Programação de oficina",
+"26":"Processo de implementação do Programa de Qualificação de Museus para o Turismo",
+"27":"Recomendação de seleção de candidatos para participação em oficina",
+"28":"Mensagem eletrônica de cursos de oficina"
+}
+}
+}
+}
+}
+
+},
+
+/* FUNÇÃO 14 */
+
+"14":{
+nome:"FISCALIZAÇÃO MUSEAL",
+subfuncoes:{
+"01":{
+nome:"Apuração de irregularidades",
+atividades:{
+"01":{
+nome:"Apuração e instrução de denúncias e irregularidades em museus e bens culturais",
+documentos:{
+"01":"Relatório de atividades desenvolvidas no museu após denúncia",
+"02":"Avaliação de crise institucional de museu",
+"03":"Carta da situação de museu",
+"04":"Laudo de vistoria técnica após denúncia",
+"05":"Processo de apuração de irregularidades por denúncia",
+"06":"Processo de apuração de danos a bem cultural",
+"07":"Inquérito civil de apuração financeira",
+"08":"Pedido de intervenção em obras",
+"09":"Denúncia de fechamento de museu ou centro cultural"
+}
+}
+}
+}
+}
+
+}
+
+};
+
+/* CRIAR ÁRVORE */
+
+function criarArvore(){
+
+const arvore=document.getElementById("arvore");
+
+Object.entries(plano)
+.sort((a,b)=>Number(a[0])-Number(b[0]))
+.forEach(([f,dF])=>{
+
+let liF=document.createElement("li");
+liF.className="funcao";
+
+let seta=document.createElement("span");
+seta.className="seta";
+seta.textContent="▶";
+
+liF.appendChild(seta);
+liF.append(" "+f+" - "+dF.nome);
+
+let ul=document.createElement("ul");
+ul.classList.add("hidden");
+
+liF.onclick=function(e){
+e.stopPropagation();
+ul.classList.toggle("hidden");
+seta.textContent=ul.classList.contains("hidden")?"▶":"▼";
+};
+
+Object.entries(dF.subfuncoes||{}).forEach(([s,dS])=>{
+
+let liS=document.createElement("li");
+liS.className="subfuncao";
+liS.textContent=f+"."+s+" - "+dS.nome;
+
+let ulA=document.createElement("ul");
+ulA.classList.add("hidden");
+
+liS.onclick=function(e){
+e.stopPropagation();
+ulA.classList.toggle("hidden");
+};
+
+Object.entries(dS.atividades||{}).forEach(([a,dA])=>{
+
+let liA=document.createElement("li");
+liA.className="atividade";
+liA.textContent=f+"."+s+"."+a+" - "+dA.nome;
+
+let ulD=document.createElement("ul");
+ulD.classList.add("hidden");
+
+liA.onclick=function(e){
+e.stopPropagation();
+ulD.classList.toggle("hidden");
+};
+
+Object.entries(dA.documentos||{}).forEach(([d,n])=>{
+
+let liD=document.createElement("li");
+liD.className="documento";
+liD.textContent=f+"."+s+"."+a+"."+d+" - "+n;
+
+ulD.appendChild(liD);
+
+});
+
+liA.appendChild(ulD);
+ulA.appendChild(liA);
+
+});
+
+liS.appendChild(ulA);
+ul.appendChild(liS);
+
+});
+
+liF.appendChild(ul);
+arvore.appendChild(liF);
+
+});
+
+}
+
+/* PESQUISA */
+
+function pesquisar(txt){
+
+txt=txt.toLowerCase();
+
+document.querySelectorAll("li").forEach(li=>{
+
+li.classList.remove("highlight");
+
+if(li.textContent.toLowerCase().includes(txt) && txt!=""){
+li.classList.add("highlight");
+}
+
+});
+
+}
+
+window.onload=criarArvore;
+
+</script>
+
+</body>
+</html>
